@@ -15,6 +15,8 @@ pip install -r requirements.txt
 
 cd app
 
+./manage.py migrate
+
 ./manage.py createsuperuser
 
 ./manage.py runserver
