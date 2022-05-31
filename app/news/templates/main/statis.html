@@ -1,0 +1,39 @@
+{% extends 'basis.html' %}
+{% load thumbnail %} 
+
+{% block title %}
+    Statistics
+{% endblock title %}
+
+{% block content %}
+<style>
+    table.text  {
+     width:  50%; /* Ширина таблицы */
+     border-spacing: 0; /* Расстояние между ячейками */
+    }
+    table.text td {
+     width: 50%; /* Ширина ячеек */
+     vertical-align: top; /* Выравнивание по верхнему краю */
+    }
+    
+</style>
+<table class="text">
+    <tr>
+        <td>Заголовок</td>
+        <td class="rightcol">Колличество просмотров</td>
+    </tr>
+</table>
+<hr>
+<hr>
+
+{% for i in news_stat %}
+<table class="text">
+    <tr>
+        <td><a href="{% url 'news:alone' pk=i.pk %}">{{i.name}}</a></td>
+        <td class="rightcol">{{i.views_new}}</td>
+    </tr>
+</table>
+<hr>
+{% endfor %}
+{% endblock content %}
+    

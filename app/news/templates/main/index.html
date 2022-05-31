@@ -1,0 +1,36 @@
+{% extends 'basis.html' %}
+{% load thumbnail %} 
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block content %}
+<div class="card">
+    
+    {% for i in news %}
+    
+        <div class="column ">
+            <div class="card-content">
+                <a href="{% url 'news:alone' pk=i.pk %}">
+                    <h3>{{i.name}}</h3>
+                </a>
+            <h4>Теги:</h4>
+
+                {% for teg in i.tegs.all %}
+                    <h5 ><font  color="#fa8e47" face="serif">{{teg.name}}</font></h5>
+                {% endfor %}
+
+            </div>
+            
+            <img src="{% thumbnail i.image '300x200' crop='smart' %}" alt="cat">
+            <div class="card-content">
+
+                <h3>{{i.create_at}}</h3>
+
+            </div>
+            
+        </div>
+    <hr>
+    {% endfor %}
+{% endblock content %}
+    

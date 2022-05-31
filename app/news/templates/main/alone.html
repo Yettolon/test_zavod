@@ -1,0 +1,30 @@
+{% extends 'basis.html' %}
+{% load thumbnail %} 
+
+{% block title %}
+    {{new.pk}}
+{% endblock title %}
+    
+{% block content %}
+
+
+
+<div class="single_product_img">
+    <p>
+        <img src="{% thumbnail new.image '300x200' crop='smart' %}" alt="cat">
+    {%for i in ais %}
+    <img src="{% thumbnail i.image '300x200' crop='smart' %}" alt="#" class="img-fluid">
+
+    {%endfor%}
+    </p>
+    <h3>{{new.name}}</h3>
+    <hr>
+    <h4><textarea rows="10" cols="265" name="text">{{new.text}}</textarea></h4>
+</div>
+<div class="card-content">
+    <hr>
+    <h3>{{new.create_at}}</h3>
+
+</div>
+{% endblock content %}
+    
